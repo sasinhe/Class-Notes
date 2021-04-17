@@ -1,0 +1,207 @@
+\documentclass[english, a4paper,12pt]{Iart}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\swapnumbers % optional, of course
+\newtheorem{thm}{Theorem}[section] % the main one
+\newtheorem{lemma}[thm]{Lemma}
+% other statement types
+
+% for specifying a name
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm}}
+	{\end{genericthm}}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}
+	{\end{genericthm*}}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\begin{document}
+
+\author{Samir Salmen}
+\title{Notes on Classical Mechanics}
+\date{February 2021}
+
+
+
+%Ideas:
+%Add a "What will you learn in this chapter box"
+
+
+
+
+
+\maketitle
+
+	\chapter*{Preface}
+		% TODO
+		\TODO{add some interesting citation here}
+	
+	\chapter*{Recommended Bibliography}
+		Beside this notes, the reader is encouraged to seek other sources, among which there are some classics (and other more obscure textbooks):
+		\smallskip
+	
+		
+		\begin{itemize}
+			\item H. Goldstein, C. Poole and J. Safko, \textit{Classical Mechanics}\\
+			It is the main reference of this notes and of almost every first course on Classical Mechanics, a must-read for everyone interesting in studying the subject.\\
+			
+			% TODO
+			\TODO{add some comments about how Goldstein aproaches the problem}
+			
+			\item Arnold, A. Weinstein, K. Vogtmann -
+			\textit{Mathematical Methods Of Classical Mechanics}
+		
+		\end{itemize}
+		
+	\chapter*{What is this book about}
+
+
+\part{Newtonian Mechanics}
+	\chapter{Kinematics and a introduction to Mechanics}
+		We'll first start studying the simplest system possible, a infinitesimal point moving through empty space. But before that, we must first define some concepts.
+		
+		\section{Key concepts to Kinematics}
+			\subsection{Vectors and Scalars}
+	
+							
+
+
+	\chapter{Newtonian Mechanics in 1-D}
+		
+	
+	
+\part{Lagrangian and Hamiltonian Formulations}
+	\chapter{Elementary Principles}
+		In this chapter, we'll do a quick review on some concepts from the previous part while also adding	some key notions for understanding other formulations of mechanics.
+		\section{Mechanics of a Particle}
+			Let $\vec{r}$ be the position of an given particle to the origin. We know that the
+			velocity vector $\vec{v}$ is given by:
+			\begin{align*}
+				\vec{v} =\frac{d\vec{r}}{dx} 
+			.\end{align*}
+			The linear momentum of the particle is defined as the product of the velocity with
+			it's mass:
+			\begin{align*}
+				\vec{p} = m\vec{v}
+			.\end{align*}		
+			This equations alone can't describe more interesting systems, because they don't
+			account for forces external to the particle. Therefore, we need some relation between
+			the linear momentum and the forces acting on the mass. This is given by
+			\textbf{Newton's Second Law}:
+			\begin{align*}
+				\sum_{n=1}^{N}\vec{F}_n = \frac{d\vec{p}}{dx}
+			.\end{align*}
+			This equation of motion is a diferential equation (which can be tranformed to a
+			diferential equation of second order with respect to $\vec{r}$, assuming that
+			$\vec{F}$ does not depend on higher order
+			derivatives)\\
+			
+			A reference frame in which Newton's Law is valid is called a inertial frame. And one
+			which it isn't is called a non-inertial frame.\\
+			Note that for diferentiating inertial" to non-inertial ones we need \textbf{Newton's Third
+			Law}. \textit{Only by detecting forces without an action-reaction pair} one may detect that they are on a 
+			non-inertial frame.\\
+			
+
+
+
+
+		\section{Conservation Laws}
+
+		\subsection{Mechanics of a System of Particles}
+		
+		\section{Degrees of Freedom}
+		We are motivated to define a dynamical variable
+		as any set of variables that \textit{fully}
+		describe our system in its totality (including
+		the change of it undet the action of the forces).
+		We obviously also want to it be a minimal set.
+		Therefore, what we are looking are some variables
+		that are fully indepentent between them (and
+		are themselves functions of time). This functions
+		can be found by solving Newton's Law together
+		with some initial conditions corresponding to
+		each variable.\\
+		Usually the dynamic variables are chosen to be
+		positions and/or angles. For a free particle on
+		3D space for example, the dynamic variables are the 
+		cartesian coordinates $\vec{r}(t) = (x(t), y(t),
+		z(t))$.\\
+		Unspecified dynamical variables $q_k$ are
+		referred to as \textit{generalized coordinates}.
+		Note that the number of degrees of freedom is an
+		intrisic proprierty of the system, however what
+		are the actual coordinates is up to us. This have
+		to do withe the vector structure of the phase
+		space, more on that later.\\
+		\section{Constraints}
+		\textit{Constraints} reduce the number of degrees
+		of freedom. Originally, a $N$ dimensional space
+		with $M$ particles have $N*M$ degrees of freedom.
+		This is a lot of variables to take track of, so
+		the concept of constrains help us to minimize
+		this number.\\
+		Take for example a 2D pendullum with radius $R$.
+		Even thou it is on 2D space,it only takes a single
+		angle $\theta$ to fully describe the system.\\
+		Therefore if there are $j$ \textit{indepentent}
+		constrains, the system has only $V = N*M - j$
+		degrees of freedom.\\
+		In general, we have two different types of
+		degrees of freedom. The \textit{explicit time dependence}
+		constrains are the ones we call
+		\textit{holonomic}, while time indepentent
+		constrains are called \textit{scleronomic}.
+		
+	\chapter{Lagrangian Formalism}
+		
+		At this point, one may ask: "Why do we need other formulations for Classical Mechanics? Isn't Newton's formulation complete? (in a sense that it can describe all physical systems)".\\
+		%todo double pendullum example.
+		The answer for the first question is highlighted by example 	
+		(???), It shows that albeit Newton's formulation is indeed complete,when deriving the equations of motion starting from the diagram of forces it cannot account correctly for one thing, \textbf{Human mistake}.
+		
+		
+		
+		The \textit{Action} S is defined as:
+		\begin{equation}
+			S = \int_{t_0}^{t_1} \mathcal{L}(q, \dot{q}, t) \, dt
+		\end{equation}
+		
+		The Principle of Least Action states as follows.
+		
+		\begin{namedthm*}{Principle of Least Action}
+			The evolution of a physical system in the time interval $[t_0, t_1]$ corresponds to a stationary point of the action.
+		\end{namedthm*}
+		
+		Even thou the action usually takes a minimum on the true trajectory of the system, this isn't always true, as \href{http://www.eftaylor.com/pub/Gray&TaylorAJP.pdf}{this example shows}.\\
+		
+		Before we go any further, I would like to make a brief discussion about the intuition behind the Least Action principle.
+		
+		%todo
+		\TODO{add discurssion about Least action principle}
+	
+	
+	
+	\chapter{Exoteric formulations of Classical Mechanics}
+			
+	
+
+	
+\end{document}

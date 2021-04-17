@@ -1,0 +1,14 @@
+\babel@toc {brazilian}{}
+\ttl@starttoc {default@1}
+\ttl@starttoc {parts@1}
+\contentsline {part}{I\hspace {1em}Probability}{3}{part.1}%
+\ttl@stoptoc {parts@1}
+\ttl@starttoc {parts@2}
+\contentsline {part}{II\hspace {1em}Basic Statistics}{5}{part.2}%
+\contentsline {chapter}{\numberline {1}Common Distributions}{9}{chapter.1}%
+\contentsline {section}{\numberline {I}What is a distribution?}{9}{section.1.1}%
+\ttl@stoptoc {parts@2}
+\ttl@starttoc {parts@3}
+\contentsline {part}{III\hspace {1em}Useful Techniques on Statistics}{11}{part.3}%
+\contentsline {chapter}{\numberline {2}Transformations and Expectations}{15}{chapter.2}%
+\contentsfinish 

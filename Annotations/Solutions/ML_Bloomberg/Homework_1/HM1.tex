@@ -1,0 +1,54 @@
+\documentclass[
+% all of the below options are optional and can be left out
+% course name (default: 2IL50 Data Structures)
+course = {{Foundations of Machine Learning}},
+% quartile (default: 3)
+quartile = {{1}},
+% assignment number/name (default: 1)
+assignment = 1,
+% student name (default: Some One)
+name = {{Samir Salmen}},
+% student number, NOT S-number (default: 0123456)
+studentnumber = {{NUSP: 11298636}},
+% student email (default: s.one@student.tue.nl)
+email = {{samir.salmen@usp.br}},
+% first exercise number (default: 1)
+firstexercise = 1
+]{aga-homework}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\renewcommand*{\proofname}{Proof}
+\begin{document}
+	
+	\exercise
+		We want to find an $a^* = {\arg\min}_a \mathbb{E}(a-y)^2$, where y is a random variable. We know that because y is randomly distributed, by definition its expected value is $\mathbb{E}[y]$. This means that if $a^* = \mathbb{E}[y]$, then on average $a^*$ minimizes $l(a, y)$.
+		
+		\begin{theorem*}
+			if $l(a,y) = (a-y)^2$, then the Bayes argument that minimizes the loss function is $a^* = \mathbb{E}y$.
+		\end{theorem*}
+		\begin{proof}
+			 \begin{align*}
+			 	a^* &= {\arg\min}_a \mathbb{E}(a-y)^2\\
+			 	a^* &= {\arg\min}_a [\mathbb{E}[y^2] + a^2 - 2a\mathbb{E}[y]]	
+			 \end{align*}
+		 
+		 Deriving this expression with respect to $a$.
+			 
+			 \begin{align*}
+			 	0 &= 2a^* - 2\mathbb{E}[y]\\
+			 	a^* &= \mathbb{E}[y]
+			 \end{align*}
+			 
+		\end{proof}
+
+
+
+
+	\exercise
+		\subexercise
+			Based on exercise 1, we know that $f^*(x) = \mathbb{E}[y|x]$.
+		\subexercise
+			
+	
+\end{document}

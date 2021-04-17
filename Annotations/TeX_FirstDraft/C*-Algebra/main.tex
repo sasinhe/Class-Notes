@@ -1,0 +1,92 @@
+\documentclass[english, a4paper,12pt]{Iart}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\swapnumbers % optional, of course
+\newtheorem{thm}{Theorem}[section] % the main one
+\newtheorem{lemma}[thm]{Lemma}
+% other statement types
+
+% for specifying a name
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm}}
+	{\end{genericthm}}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}	{\end{genericthm*}}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\author{Samir Salmen}
+\title{C*-Algebra}
+\date{February 2021}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\cgeqp}{\succeq^P}
+
+\newcommand{\cleqp}{\preceq^P}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+
+\maketitle
+
+
+\chapter{Order vector spaces and positivity}
+
+\section{Basic Notions}
+\subsection{Cones}
+
+Let $V$ be a vector space over a field. We say that $P \subset V$ is a \textbf{cone} if: $\forall \lambda \geq 0 \text{ and } v \in P, \lambda v \in P$.\\
+A given cone is \textbf{convex} if it is closed under vector addiction.\\
+Note that a convex cone is also a convex set.\\
+\subsection{Preorders}
+Any convex cone $P \subset V$ naturally defines a pre-order relation in V, denoted here by $\cgeqp$:
+\begin{align*}
+	v \cgeqp v' \iff v-v' \in P,\, v,v' \in  V 
+\end{align*}
+from that follows:
+\begin{itemize}
+	\item For all $v,v',w,w'\in P$ with $v \cgeqp v'$ and $w \cgeqp w'$, one has $v+w \cgeqp v'+w'$.
+	\item For all $\lambda \geq 0$ and $v, v' \in  P$ with $v \cgeqp v'$, one has $\lambda v \cgeqp \lambda v'$
+\end{itemize}
+Conversely, if $\succeq$ is a pre-order in V with the above two proprieties, then it tis the preorder associeted with the convex cone
+\begin{align*}
+	V^+ \defeq  \{v \in V: v \succeq 0\}.
+.\end{align*}
+
+\begin{definition}
+	The pair $(V, \succeq)$ is called "preordered vector space", while the elements that are greater in this order than zero are called the "positive elements".
+\end{definition}
+
+
+
+
+
+
+
+\end{document}
+
+
+

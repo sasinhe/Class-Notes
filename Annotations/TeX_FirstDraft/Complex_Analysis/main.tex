@@ -1,0 +1,201 @@
+\documentclass[english, a4paper,12pt]{Iart}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tcolorbox}
+\swapnumbers % optional, of course
+\newtheorem{thm}{Theorem}[section] % the main one
+\newtheorem{lemma}[thm]{Lemma}
+% other statement types
+
+% for specifying a name
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm}}
+	{\end{genericthm}}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}	{\end{genericthm*}}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\author{Samir Salmen}
+\title{Complex Analysis}
+\date{February 2021}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+%Ideas:
+%Add a "What will you learn in this chapter box"
+
+\maketitle
+
+
+\chapter{Lecture I: Introduction to Complex Analysis}
+
+
+Complex Analysis is the natural analogy of Real Analysis to the field of real numbers.
+like real numbers that are represented on a line, complex numbers (of the form $a+bi\,|\,a,b \in \mathbb{R}$ \t and  $i^2 = -1$) are represented on a plane.\\
+Complex analysis is more close to geometric than algebraic thinking, this is justified by the concept that complex analysis can be defined as following:
+\begin{definition}
+    Complex analysis is the local relevant for the study of complex manifolds.
+\end{definition}
+This phrase contains much of the motivation about complex analysis. Lets develop this thought:
+\begin{enumerate}
+    \item Important in mathematics and physics.
+        \begin{enumerate}
+            \item String theory (with complex geometry)
+            \item Analytic functions appear often on Fourier analysis, Harmonic analysis, number theory...  
+        \end{enumerate}
+        \begin{example}[Riemman zeta function]
+            \begin{align*}
+                \zeta(s) = \frac{1}{\Gamma(s)} \int^\infty_0 \frac{x^{s-1}}{e^x-1} \, dx. \, s\in \mathbb{c}
+            \end{align*}
+            Are all non trivial zeros of this function on the $Re[x] = \frac{1}{2}$ line?
+        \end{example}
+I\end{enumerate}
+Lets define the goals of this course now:
+\begin{itemize}
+    \item Analytic functions and power series.
+    \item the Riemann sphere and Mobius transformation.
+    \item Complex integration.
+    \item some "bonus topics".
+\end{itemize}`
+
+
+Now, lets extend the usual real concepts to the complex plane.
+
+\begin{itemize}
+    \item Trigonometric: $e^{ix} = \cos(x) + i\sin(x) \implies \cos(x) = \frac{\exp(ix) + \exp(-ix)}{2}$
+    \item Differentiation: Different from Real Functions, there is only two classes of complex functions. $C^\infty$ and discontinuous ones.
+    \item Integration: Like differentiation, integration is also different. When you integrate a function on the complex plane, the answer will depend on the path taken. However, \textbf{Cauchy Theorems} states that the integral of $f(x)$ \textit{almost} does not depend on th path taken (the set of functions that depend on it are called \textbf{non-holomorphic}).
+    \item \textit{Difficult} real operations: We can learn to realize some difficult calculations more easily using complex analysis (like $\int^\infty_0 \frac{\sin(x)}{x} \, dx$).
+    \item Analytic continuation:  A function that is \textit{complex differentiable} on $[a, b]$ has a \textit{unique} differentiable analytic continuation.
+\end{itemize}
+
+\section{Construction of $\mathbb{C}$}
+\underline{Classical analysis}: Works over $(\mathbb{R}, +, \cdot)$ an \textbf{ordered field}, i.e.
+\begin{itemize}
+    \item $\forall x, y \in \mathbb{R}$, either $x < y,\,x > y,\,x=y$ holds true.\\
+    \item $x, y > 0 \implies x+y > 0 \text{ and } xy > 0$.
+\end{itemize}
+However, $\mathbb{R}$ is \textbf{\textit{not} algebraic closed}. ($x^2 + 1$ has no roots /$\mathbb{R}$).\\
+
+\underline{Question}: Can $(\mathbb{R}^2, +)$ (Abelian group) be made into a field? [what about $(\mathbb{R}^n, +)$?].\\
+
+\begin{theorem}
+    If this is possible, then $\exists z \in (\mathbb{R}^2, +, \cdot)$ such that $z^2 = -1$.
+\end{theorem}
+\begin{proof}
+    Chose a basis $\{1, e\}\text{ of }\mathbb{R}^2$
+    \begin{align*}
+        z &= x \cdot 1 + y \cdot e \\
+        z^2 &= x^2 \cdot 1 + 2xy \cdot e + y^2 \cdot e^2 \\
+        e &= a\cdot 1 + b\cdot e, a,b \in \mathbb{R} \\
+        z^2 &= (x + ay^2)\cdot 1 + (2xy + by^2)\cdot e \\
+    \end{align*}
+    We want to find $(x,y) \in \mathbb{R}$ s.t $z^2 = -1$. Then we must have $2x + by^2 = 0$. 
+    So either $y = 0$ or $x = -\frac{b}{2}y$, lets discard the first one because it implies that $z \in \mathbb{R}$. Therefore, if we go after the second possibility a straight foward calculation gives:
+    \begin{align*}
+        z^2 &= ((-\frac{b}{2}y)^2 + ay^2)\cdot 1 + (0)\cdot e\\
+        z^2 &= (a+\frac{b^2}{4})y \cdot 1\\
+    .\end{align*}
+    One can prove that $y = -\frac{1}{(a+\frac{b^2}{4})}$. Therefore $z^2 = -1$. This proof was first introduced by Gauss in his thesis, 1799.  
+\end{proof}
+
+
+\chapter{Lecture II: Complex Differentiation}
+$\mathbb{C}$ is a metric space with $d(z,w) = |z-w|$ isometric to $\mathbb{R}^2$.\\
+\underline{Triangle ineq}: $|z+w| \le |z| + |w|$.\\
+\underline{Topology}: Open disks $\{z \in \mathbb{C}: |z-w| < R\} = D(w, R)$ (analogous with closed disks)\\
+\begin{definition}[open sets in $\C$]
+    $A \subset \C$ is open if $\forall a \in A$ has a disk $D(a, \epsilon) \le A$ for some $\epsilon > 0$.
+\end{definition}
+
+\section{Functions}
+$f: \C \to \C$ can be viewed as $f: \R^2 \to \R^2$ because $\C \simeq R^2$.
+Therefore, we have:
+\begin{align*}
+    f(z) = u(x,y) + iv(x,y)$
+.\end{align*}
+\subsection{Complex Differentiation}
+\begin{align*}
+    f: A &\to \C, a \subset \C\\
+    \C field &\implies \text{ Can consider}\\
+    \frac{f(z+h) - f(z)}{h} &\text{ is well defined}\\
+.\end{align*}
+Therefore, the derivative (if it exists) of $f(z)$ is defined as:
+\begin{align*}
+    f'(z) = \lim_{h\to 0} \frac{f(z+h)-f(z)}{h}
+.\end{align*}
+Note that means that this limit exists for every direction you take to approach the origin. This is indeed \textbf{a very strong condition}. This justifies the strange behavior of this kind of functions that we'll see later on.\\
+\begin{defnition}
+        A function is holomorphic on $A$ if $f$ is complex differentiable at each point $a \in A$.
+\end{defnition}
+
+\begin{tcolorbox}
+    Note: All the usual rules of differentiation works on complex differentiation.\\
+    \begin{itemize}
+        \item (f+g)' = f' + g'\\
+        \item (fg)' = f'g + fg'
+        \item \ldots
+    \end{itemize}
+\end{tcolorbox}
+
+Now, lets study a condition that implies holomorphism on functions.
+\subsection{Cauchy-Riemann equations}
+\begin{align*}
+    z = x+iy; x,y \in \R
+    f = y+iv; u,v: \R^2 \to R
+.\end{align*}
+We can approach the origin (in particular) along:
+\begin{enumerate}
+    \item $(x+k,y) \to (x,y)$
+    \item $(x,y+ik) \to  (x,y)$
+\end{enumerate}
+\begin{enumerate}
+    In \item $\frac{f(z+h)-f(z)}{h} = \frac{u(x+k,y)}{k} + i \frac{v(x+k,y)}{k}$\\
+    $f$ holomorphic $\implies f'(z) = \left(\frac{\partial u}{\partial x} + i \frac{\partial u}{\partial x}\right)(x,y) $
+    Doing the same for \item we get:
+\end{enumerate}
+\begin{align*}
+    \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\\
+    \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}  
+\end{align*}
+This is a necessary condition for holomorphism (called Cauchy-Riemann Equations). This isn't what we want exactly, but is a good progress. The sufficient condition will be described next.
+\subsection{"Partial Converse"}
+\begin{theorem}[Goursat]
+    if $u,v: \R^2 \supset A \to \R$ satisfy the CR equations and $\frac{\partial u}{\partial x}$, $\frac{\partial u}{\partial y}$, $\frac{\partial v}{\partial x}$ and $\frac{\partial v}{\partial y}$ are continous.\\
+    Then $ f := u +iv$ is holomorphic on $A$.
+\end{theorem}
+
+\subsection{Alternative way to think about holomorphic function}
+
+\section{Power series}
+\underline{Recall:} X metric space.\\
+\underline{Def.}
+\begin{enumerate}
+    \item A sequence $x_{n} \in X$ is Cauchy $\iff \forall \epsilon > 0 \exists N \in
+\end{enumerate}
+
+
+\end{document}

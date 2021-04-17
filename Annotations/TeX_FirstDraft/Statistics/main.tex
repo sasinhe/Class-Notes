@@ -1,0 +1,79 @@
+\documentclass[english, a4paper,12pt]{Iart}
+
+\usepackage{amsthm}
+
+\swapnumbers % optional, of course
+\newtheorem{thm}{Theorem}[section] % the main one
+\newtheorem{lemma}[thm]{Lemma}
+% other statement types
+
+% for specifying a name
+\theoremstyle{plain} % just in case the style had changed
+\newcommand{\thistheoremname}{}
+\newtheorem{genericthm}[thm]{\thistheoremname}
+\newenvironment{namedthm}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm}}
+	{\end{genericthm}}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem*{genericthm*}{\thistheoremname}
+\newenvironment{namedthm*}[1]
+{\renewcommand{\thistheoremname}{#1}%
+	\begin{genericthm*}}
+	{\end{genericthm*}}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\begin{document}
+	
+\author{Samir Salmen}
+\title{Notes on Probability and Statistics}
+\date{February 2021}
+
+\maketitle
+
+\part{Probability}
+
+\part{Basic Statistics}
+\chapter{Common Distributions}
+\section{What is a distribution?}
+A probability distribution is a mathematical function that gives the chance of a given event inside the sample space. Formally, one can say: \\ 
+
+\begin{namedthm*}{Probability distribution function}
+	Let $(\Omega, \sigma, \mu)$ be a measurable space. Then, a \textbf{pdf} is a function $f$ with the propriety that for a random variable $X \in \Omega$ we have $Pr[X]$ 
+\end{namedthm*}
+
+Distributions are a main subject inside statistics. If a given random data distribution is known, then everything about that data is easy to deduce. Therefore, the main object inside statistical analysis is \textbf{learn everything possible about the underlying data distribution}.	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\part{Useful Techniques on Statistics}
+\chapter{Transformations and Expectations}
+
+
+
+
+
+
+\end{document}

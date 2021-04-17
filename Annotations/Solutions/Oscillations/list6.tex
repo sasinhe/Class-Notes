@@ -1,0 +1,248 @@
+\documentclass[
+% all of the below options are optional and can be left out
+% course name (default: 2IL50 Data Structures)
+course = {{ITVO}},
+% quartile (default: 3)
+quartile = {{1}},
+% assignment number/name (default: 1)
+assignment = 6,
+% student name (default: Some One)
+name = {{Samir Salmen}},
+% student number, NOT S-number (default: 0123456)
+studentnumber = {{NUSP: 11298636}},
+% student email (default: s.one@student.tue.nl)
+email = {{samir.salmen@usp.br}},
+% first exercise number (default: 1)
+firstexercise = 1
+]{aga-homework}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\renewcommand*{\proofname}{Proof}
+
+\usepackage{dsfont}
+\begin{document}
+	
+	\exercise
+	Our Equation of motion is given by:
+	\begin{equation}
+		\ddot{\phi} - \frac{g + \ddot{h}}{l}\phi = 0
+	\end{equation}
+	
+	We may also define $a(t) = \frac{g + \ddot{h}}{l}$.
+		\subexercise
+			Lets define $a(t)$ in the following way:
+			\begin{equation}
+				a(t) =
+				\begin{cases}
+					w_1^2, \, t \in (0, \pi)\\
+					w_2^2, \, t \in (\pi, 2\pi)
+				\end{cases}
+			\end{equation}
+			
+			where in both cases $|\ddot{h}(t)| < g$.\\
+			
+			
+			
+			Lets calculate $F_1$. The equation of motion for $[0,\pi]$ is:
+			
+			\begin{equation}
+				\ddot{\phi} + \omega_1^2\phi = 0
+			\end{equation}
+			
+			The general solution for this equation is simply:
+			
+			\begin{equation}
+				\phi(t) = c_1e^{\omega_1t}+ c_2e^{-\omega_1t}
+			\end{equation}
+			
+			Therefore, $\dot{\phi(t)} = \omega_1c_1e^{\omega_1t} - c_2e^{-\omega_1t}$. From that, one may deduce the following:
+			
+			\begin{align}
+				x &= \begin{pmatrix}
+					\phi\\
+					\dot{\phi}
+				\end{pmatrix}
+				= 		
+				\begin{pmatrix}
+					e^{\omega_1t} & e^{-\omega_1t}\\
+					\omega_1e^{\omega_1t} & -\omega_1e^{-\omega_1t}
+				\end{pmatrix} 
+				\begin{pmatrix}
+					c_1\\
+					c_2
+				\end{pmatrix}
+			\end{align}
+			
+			In order to discover the columns of $F_1$, lets define some initial conditions.\\
+			For $F_1$, lets fix an initial condition $
+			x(0) = \begin{pmatrix}
+				1\\
+				0
+			\end{pmatrix}	
+			$.
+			This implies:
+			\begin{equation}
+				\begin{cases}
+					c_1 + c_2 = 1\\
+					c_1 \omega_1 - c_2 \omega_1 = 0
+				\end{cases}
+			\end{equation}
+			Therefore, $a_1 = a_2 = \frac{1}{2}$ in this case.
+			
+			Analogously, for the second column of $F_1$ lets define $x(0) = \begin{pmatrix}
+				0\\
+				1
+			\end{pmatrix}$. This implies that $c_1 = -c_2 = \frac{1}{\omega_1}$.\\
+			This same analysis can be done for $F_2$. Therefore, $F_1$ and $F_2$ are given as follows:
+			
+			\begin{equation}
+				F_1 = \begin{pmatrix}\cosh(\omega_1\pi) & \frac{1}{\omega_1}\sinh(\omega_1\pi)\\ \omega_1\sinh(\omega_1\pi) &  \cosh(\omega_1\pi) \end{pmatrix}
+			\end{equation}
+			\begin{equation}
+				F_2 = \begin{pmatrix}\cosh(\omega_2\pi) & \frac{1}{\omega_2}\sinh(\omega_2\pi)\\ \omega_2\sinh(\omega_2\pi) &  \cosh(\omega_2\pi) \end{pmatrix}
+			\end{equation}
+			
+			We know that $F = F_2F_1$. Therefore (Assuming $\omega_1 < \omega_2)$:
+			
+			\begin{align}
+				|\text{tr}(F)| &= |2\cosh(\omega_1\pi)\cosh(\omega_2\pi) + (\frac{\omega_2}{\omega_1} + \frac{\omega_1}{\omega_2})\sinh(\omega_1\pi)\sinh(\omega_2\pi)|\\
+				|\text{tr}(F)| &< |2\cosh(\omega_1\pi)\cosh(\omega_2\pi) + \sinh(\omega_1\pi)\sinh(\omega_2\pi)|\\
+				|\text{tr}(F)| &< \left|\cosh([\omega_1 + \omega_2]\pi)\right| < \left|\cosh(\pi\sqrt{\frac{4g}{l}})\right|
+			\end{align}
+			
+			Notice now that if $l < \frac{4g\pi^2}{[\cosh^{-1}(2)]^2} \approx 227.6 \, m$, then $|\text{tr}(F)| < 2$. Therefore the system is stable except for very long handles.
+			
+		\subexercise
+			This problem is analogous to the previous one, except for some things. First in the period from $[\pi, 2\pi]$ we know that $a(t) = -\omega_2^2 < 0$, second we know that $|\ddot{h}(t)| > g, \, \forall t$. Therefore, $F_1$ and $F_2$ are:
+			\begin{equation}
+				F_1 = \begin{pmatrix}\cosh(\omega_1\pi) & \frac{1}{\omega_1}\sinh(\omega_1\pi)\\ \omega_1\sinh(\omega_1\pi) &  \cosh(\omega_1\pi) \end{pmatrix}
+			\end{equation}
+		
+			$F_2$ deduction is slightly different this time, the solution of the original ODE (when studied inside $[\pi, 2\pi]$) gives the following:
+			\begin{equation}
+				\ddot{\phi} - \omega_1^2\phi = 0
+			\end{equation}
+			
+			The solution for this equation is:
+			\begin{equation}
+				\phi(t) = c_1\sin(\omega_2 t) + c_2\cos(\omega_2 t)
+			\end{equation}
+			
+			Therefore, 
+			
+			\begin{align}
+				x &= \begin{pmatrix}
+					\phi\\
+					\dot{\phi}
+				\end{pmatrix}
+				= 		
+				\begin{pmatrix}
+					\sin(\omega_2 t) & \cos(\omega_2 t)\\
+					\omega_2\cos(\omega_2 t) & -\omega_2\sin(\omega_2 t)
+				\end{pmatrix} 
+				\begin{pmatrix}
+					c_3\\
+					c_4
+				\end{pmatrix}
+			\end{align}
+			
+		
+			
+			setting 
+			$
+			x(0) = \begin{pmatrix}
+				1\\
+				0
+			\end{pmatrix}	
+			$ 
+			gives $c_3 = 0$, $c_4 = 1$. The other initial condition used on the first problem gives $c_3 = \frac{1}{\omega_2}$, $c_4 = 0$. Therefore, we know that:
+			
+			\begin{equation}
+				F_2 = \begin{pmatrix}\cos(\omega_2\pi) & \frac{1}{\omega_2}\sin(\omega_2\pi)\\ -\omega_2\sin(\omega_=2\pi) &  \cos(\omega_2\pi) \end{pmatrix}
+			\end{equation}
+			
+			Notice that F contains products of hyperbolic functions with trigonometric ones. Therefore, a stability analysis without numerical values for each constant is improbable.
+			
+			
+			
+			
+			
+			
+			
+			
+	\exercise
+		\subexercise
+			Our Lagrangian for each mass is given by $\mathcal{L} = T - U$, where $T_{2i+1} = \frac{m_1}{2}\dot{x}_{2i+1}$, $T_{2i} = \frac{m_2}{2}\dot{x}_{2i}$ and $U_i = -\frac{-k}{2}(2x_i - x_{i+1} - x_{i-1})^2$. Therefore, by Euler-Lagrange equation:
+			
+			
+			\begin{align}
+				\begin{cases}
+					m_1\ddot{x_n} + k(2x_n - y_{n-1} - y_{n}) &= 0\\
+					m_2\ddot{y_n} + k(2y_n - x_{n} - x_{n+1}) &= 0
+				\end{cases}
+			\end{align}
+			
+			Where we corrected the indices to $n \in \mathbb{Z}$ in order to stay consistent with the statement of the problem.\\
+		\subexercise
+			First, lets assume a solution of the form:
+			
+			\begin{equation}
+				\begin{pmatrix}x_n\\y_n\end{pmatrix} =\begin{pmatrix}\zeta(t)\\\eta(t)\end{pmatrix} e^{ikn}
+			\end{equation}
+			
+			Therefore, we have through the equation of motion:
+			
+			\begin{align}
+				\begin{cases}	
+					m_1\ddot{\zeta}(t)e^{ikn} + k(2\zeta(t)e^{ikn} - \eta(t)e^{ik(n-1)} - \eta(t)e^{ikn}) = 0\\
+					m_2\ddot{\eta}(t)e^{ikn} + k(2\eta(t)e^{ikn} - \zeta(t)e^{ikn} - \zeta(t)e^{ik(n+1)}) = 0
+				\end{cases}	
+			\end{align}
+			
+			Dividing everything by $e^{ikn}$ we have:
+			
+			\begin{align}
+				\begin{cases}
+						m_1\ddot{\zeta}(t) + 2k\zeta(t)- k(e^{-ik} + 1)\eta(t) = 0\\
+						m_2\ddot{\eta}(t) + 2k\eta(t) - k(e^{ik} + 1)\zeta(t) = 0
+				\end{cases}
+			\end{align}
+			
+			In a matrix form, we have $\left(\text{where} \, \vec{q} = \begin{pmatrix}\zeta(t)\\\eta(t)\end{pmatrix}\right)$:
+			
+			\begin{equation}
+				\ddot{\vec{q}} + \underbrace{\begin{pmatrix}2\omega_1^2 & -\omega_1^2(e^{-ik} + 1)\\ -\omega_2^2(e^{ik} + 1) & 2\omega_2^2\end{pmatrix}}_\text{K}\vec{q} = 0
+			\end{equation}
+			or alternatively:
+			\begin{equation}
+				\ddot{\vec{q}} + K\vec{q} = 0
+			\end{equation}
+			
+			Therefore, in order to find the general solution for this ODE, one need only to find the eigenvalue $\lambda$ that solves:
+			\begin{equation}
+				\det[\lambda^2\mathds{1} + K] = 0
+			\end{equation}
+				
+			\begin{align}
+				&\det\left[\lambda^2 \begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix}+ \begin{pmatrix}2\omega_1^2 & -\omega_1^2(e^{-ik} + 1)\\ -\omega_2^2(e^{ik} + 1) & 2\omega_2^2\end{pmatrix} \right] = 0\\
+				&\det\left[\begin{pmatrix}2\omega_1^2+ \lambda^2 & -\omega_1^2(e^{-ik} + 1)\\ -\omega_2^2(e^{ik} + 1) & 2\omega_2^2 + \lambda^2\end{pmatrix}\right] = 0\\
+				&(\lambda^2+2\omega_1^2)	(\lambda^2+2\omega_2^2) - \omega_1^2\omega_2^2(e^{-ik}+1)(e^{ik}+1) = 0\\
+			\end{align}
+			Thus, the eigenvalues of this matrix are:
+			\begin{align}
+				\begin{cases}
+					\lambda = \pm \sqrt{-\omega_1^2-\omega_2^2 \pm \sqrt{\omega_1^4+\omega_2^4 + 2\omega_1^2\omega_2^2\cos(k)}}
+				\end{cases}
+			\end{align}
+		
+			After calculating the eigenvectors $\vec{u}_i$ of each eigenvalue $\lambda_i$, one may find the general solution as:
+			
+			\begin{equation}
+				\vec{q}(t) = \sum_{i=1}^{4}e^{\lambda_i t}\vec{u}_i
+			\end{equation}
+			
+			
+		
+		
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass[
+% all of the below options are optional and can be left out
+% course name (default: 2IL50 Data Structures)
+course = {{C*-Algebra}},
+% quartile (default: 3)
+quartile = {{1}},
+% assignment number/name (default: 1)
+assignment = 1,
+% student name (default: Some One)
+name = {{Samir Salmen}},
+% student number, NOT S-number (default: 0123456)
+studentnumber = {{NUSP: 11298636}},
+% student email (default: s.one@student.tue.nl)
+email = {{samir.salmen@usp.br}},
+% first exercise number (default: 1)
+firstexercise = 1
+]{aga-homework}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\renewcommand*{\proofname}{Proof}
+\begin{document}
+
+\exercise
+	\subexercise
+	We want to prove that:
+	\begin{align*}
+		\forall f', f'' (f' \succeq f'') \in  \mathcal{F}_{\tilde{\Omega}}, f-f'' \succeq 0, f'-f \succeq 0,
+		\Longrightarrow f(p) = 0 \forall p \in \tilde{\Omega}
+	.\end{align*}	
+	Note that if for all p in $\tilde{\Omega}$ $f'(p)-f(p) \geq 0$, then note that $f(p) \leq 0$. The opposite can be discovered from the relation with $f''$. Therefore $f(p) = 0 \forall p \in  \tilde{\Omega}$.
+	\subexercise
+		We want to prove an analogous relation of the above one. Only that our objective is to prove that
+		$\lim_{p\longrightarrow \infty} f(p) = 0$. Therefore, note that taking  the limit of the inequality $f(p) -
+		f''(p) \geq 0$ (and of the analogous one with $f'$) we conclude that$\lim_{p\longrightarrow \infty} f(p) = 0$.
+
+\exercise
+		
+\end{document}
